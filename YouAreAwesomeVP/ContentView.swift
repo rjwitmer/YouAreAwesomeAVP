@@ -10,7 +10,9 @@ import RealityKit
 import RealityKitContent
 
 struct ContentView: View {
-    @State private var message = "I am a Swift Programmer!"
+    @State private var message = ""
+    @State private var imageName = ""
+    
     var body: some View {
         
         VStack {
@@ -18,25 +20,28 @@ struct ContentView: View {
             //                .padding(.bottom, 50)
             Spacer()
             
-            Image(systemName: "swift")
+            Image(systemName: imageName)
                 .resizable()
                 .scaledToFit()
                 .foregroundStyle(.orange)
-                .frame(width: 200, height: 200)
+            //                .frame(width: 200, height: 200)
             
             Text(message)
                 .font(.largeTitle)
                 .fontWeight(.ultraLight)
-
+            
             Spacer()
             
-            HStack {
-                Button("Awesome") {
-                    message = "Awesome!"
-                }
-
-                Button("Great") {
-                    message = "Great!"
+            
+            Button("Press Me!") {
+                let message1 = "You are Awesome!"
+                let message2 = "You are Great!"
+                if message == message1 {
+                    message = message2
+                    imageName = "hand.thumbsup"
+                } else {
+                    message = message1
+                    imageName = "sun.max.fill"
                 }
             }
             .buttonStyle(.borderedProminent)
