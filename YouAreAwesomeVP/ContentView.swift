@@ -12,6 +12,7 @@ import RealityKitContent
 struct ContentView: View {
     @State private var message = ""
     @State private var imageName = ""
+    @State private var imageNumber = -1
     
     var body: some View {
         
@@ -33,13 +34,14 @@ struct ContentView: View {
             
             Spacer()
              
-            Button("Press Me!") {
+            Button("Show Message") {
                 let message1 = "You are Awesome!"
                 let message2 = "You are Great!"
-                let imageName1 = "image0"
-                let imageName2 = "image1"
                 message = message == message1 ? message2 : message1
-                imageName = imageName == "image0" ? "image1" : "image0"
+                
+                imageNumber = imageNumber < 9 ? imageNumber + 1 : 0
+                imageName = "image\(imageNumber)"
+
             }
             .buttonStyle(.borderedProminent)
             .font(.title2)
