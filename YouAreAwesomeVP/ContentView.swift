@@ -10,8 +10,10 @@ import RealityKit
 import RealityKitContent
 
 struct ContentView: View {
-    @State private var message = ""
-    @State private var imageName = ""
+    @State private var message: String = ""
+    @State private var lastMessageNumber: Int = -1
+    @State private var imageName: String = ""
+    @State private var lastImageNumber: Int = -1
     
     var body: some View {
         
@@ -47,8 +49,20 @@ struct ContentView: View {
                                           "You are Skilled!",
                                           "You are Stunning!"]
                 
-                message = messages[Int.random(in: 0..<messages.count-1)]
-                imageName = "image\(Int.random(in: 0...9))"
+                var messageNumber: Int
+                repeat {
+                    messageNumber = Int.random(in: 0..<messages.count-1)
+                } while messageNumber == lastMessageNumber
+                
+                var imageNumber: Int
+                repeat {
+                    imageNumber = Int.random(in: 0...9)
+                } while imageNumber == lastImageNumber
+
+                message = messages[messageNumber]
+                lastMessageNumber = messageNumber
+                imageName = "image\(imageNumber)"
+                lastImageNumber = imageNumber
                 
             }
             .buttonStyle(.borderedProminent)
