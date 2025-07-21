@@ -11,9 +11,7 @@ import RealityKitContent
 
 struct ContentView: View {
     @State private var message = ""
-    @State private var messageNumber = -1
     @State private var imageName = ""
-    @State private var imageNumber = -1
     
     var body: some View {
         
@@ -49,11 +47,8 @@ struct ContentView: View {
                                           "You are Skilled!",
                                           "You are Stunning!"]
                 
-                messageNumber = messageNumber < messages.count - 1 ? messageNumber + 1 : 0
-                message = messages[messageNumber]
-                
-                imageNumber = imageNumber < 9 ? imageNumber + 1 : 0
-                imageName = "image\(imageNumber)"
+                message = messages[Int.random(in: 0..<messages.count-1)]
+                imageName = "image\(Int.random(in: 0...9))"
                 
             }
             .buttonStyle(.borderedProminent)
