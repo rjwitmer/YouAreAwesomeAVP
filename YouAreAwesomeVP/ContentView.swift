@@ -79,12 +79,12 @@ struct ContentView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .font(.title2)
-                .tint(.blue)
                 
                 Spacer()
             }
             
         }
+        .tint(.indigo)
         .padding()
         
     }
